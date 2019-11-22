@@ -8,7 +8,8 @@ namespace GraphicalTestApp
 {
     class Tank : Entity
     {
-        
+        Sprite _texture;
+        AABB hitbox;
         public Tank(float x, float y) : base(x, y)
         {
             Sprite _texture = new Sprite("tankBlue.png");
@@ -17,14 +18,19 @@ namespace GraphicalTestApp
             AddChild(hitbox);
             OnUpdate += MoveUp;
             OnUpdate += Moveback;
+            OnUpdate += rotateleft;
+            OnUpdate += rotateright;
         }
         public void MoveUp(float deltatime)
         {
-           
-            
+
+            //if (Input.IsKeyPressed(87))
+            //{
+
+            //}
             if (Input.IsKeyPressed(87))
             {
-             
+
                 YAcceleration--;
             }
             else if (Input.IsKeyReleased(87))
@@ -37,7 +43,7 @@ namespace GraphicalTestApp
                 YVelocity = -.01f;
             }
         }
-        public void Moveback(float deltattime)
+        public void Moveback(float deltatime)
         {
             if (Input.IsKeyPressed(83))
             {
@@ -52,6 +58,21 @@ namespace GraphicalTestApp
             if (YVelocity > .01f)
             {
                 YVelocity = .01f;
+            }
+        }
+        public void rotateleft(float deltatime)
+        {
+            if (Input.IsKeyDown(65))
+            {
+                Rotate(-1f * deltatime);
+            }
+        }
+
+        public void rotateright(float deltatime)
+        {
+            if (Input.IsKeyDown(68))
+            {
+                Rotate(1f * deltatime);
             }
         }
     }
