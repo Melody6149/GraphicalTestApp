@@ -14,7 +14,7 @@ namespace GraphicalTestApp
         {
             Sprite _texture = new Sprite("tankBlue.png");
            AddChild(_texture);
-            AABB hitbox = new AABB(_texture.Width, _texture.Height);
+            hitbox = new AABB(_texture.Width, _texture.Height);
             AddChild(hitbox);
             OnUpdate += MoveUp;
             OnUpdate += Moveback;
@@ -23,42 +23,51 @@ namespace GraphicalTestApp
         }
         public void MoveUp(float deltatime)
         {
-
-            //if (Input.IsKeyPressed(87))
-            //{
-
-            //}
             if (Input.IsKeyPressed(87))
             {
+                hitbox.isPressed = true;
+                Vector3 facing = new Vector3(getm12, getm11, 0) ;
 
-                YAcceleration--;
+                XAcceleration = facing.x * -.1f;
+                YAcceleration = facing.y * -.1f;
             }
             else if (Input.IsKeyReleased(87))
             {
+                hitbox.isPressed = false;
+                XAcceleration = 0;
+                XVelocity = 0;
                 YAcceleration = 0;
                 YVelocity = 0;
             }
-            if (YVelocity < -.01f)
-            {
-                YVelocity = -.01f;
-            }
+            //if (YVelocity < -.01f)
+            //{
+            //    YVelocity = -.01f;
+            //}
+
         }
         public void Moveback(float deltatime)
         {
             if (Input.IsKeyPressed(83))
             {
-                YAcceleration++;
+                hitbox.isPressed = true;
+                Vector3 facing = new Vector3(getm12, getm11, 0);
+                
+                XAcceleration = facing.x * .1f;
+                YAcceleration = facing.y * .1f;
             }
             else if (Input.IsKeyReleased(83))
             {
+                hitbox.isPressed = false;
+                XAcceleration = 0;
+                XVelocity = 0;
                 YAcceleration = 0;
                 YVelocity = 0;
 
             }
-            if (YVelocity > .01f)
-            {
-                YVelocity = .01f;
-            }
+            //if (YVelocity > .01f)
+            //{
+            //    YVelocity = .01f;
+            //}
         }
         public void rotateleft(float deltatime)
         {

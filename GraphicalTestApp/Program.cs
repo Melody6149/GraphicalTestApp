@@ -17,7 +17,9 @@ namespace GraphicalTestApp
 
             //## Set up game here ##//
             Tank tank = new Tank(300, 300);
+            Tankturrent turrent = new Tankturrent(0,0);
             root.AddChild(tank);
+            tank.AddChild(turrent);
             game.Run();
         }
 

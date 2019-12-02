@@ -23,7 +23,7 @@ namespace GraphicalTestApp
 
         private Matrix3 _localTransform = new Matrix3();
         private Matrix3 _globalTransform = new Matrix3();
-        
+
         public float X
         {
             //## Implement the relative X coordinate ##//
@@ -60,7 +60,7 @@ namespace GraphicalTestApp
         {
             //## Implement getting the rotation of _localTransform ##//
             return (float)Math.Atan2(_globalTransform.m21, _globalTransform.m11);
-            
+
         }
 
         public void Rotate(float radians)
@@ -175,6 +175,21 @@ namespace GraphicalTestApp
             foreach (Actor child in _children)
             {
                 child.Draw();
+            }
+        }
+
+        public float getm11
+        {
+            get
+            {
+                return _globalTransform.m11;
+            }
+        }
+        public float getm12
+        {
+            get
+            {
+                return _globalTransform.m12;
             }
         }
     }
