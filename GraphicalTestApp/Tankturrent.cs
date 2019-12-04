@@ -15,7 +15,7 @@ namespace GraphicalTestApp
             X = x;
             Y = y;
             _texture = new Sprite("barrelBlue.png");
-            _texture.X = -5;
+            _texture.X = -9;
             _texture.Y = -45;
             AddChild(_texture);
             OnUpdate += Rotateleft;
