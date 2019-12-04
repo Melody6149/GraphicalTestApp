@@ -18,8 +18,8 @@ namespace GraphicalTestApp
         public Actor Parent { get; private set; } = null;
         private List<Actor> _children = new List<Actor>();
 
-        private List<Actor> additions = new List<Actor>();
-        private List<Actor> removals = new List<Actor>();
+        private List<Actor> _additions = new List<Actor>();
+        private List<Actor> _removals = new List<Actor>();
 
         private Matrix3 _localTransform = new Matrix3();
         private Matrix3 _globalTransform = new Matrix3();
@@ -89,7 +89,7 @@ namespace GraphicalTestApp
                 return;
             }
             child.Parent = this;
-            _children.Add(child);
+            _additions.Add(child);
         }
 
         public void RemoveChild(Actor child)
@@ -100,6 +100,7 @@ namespace GraphicalTestApp
             {
                 child.Parent = null;
                 child._localTransform = child._globalTransform;
+                _removals.Add(child);
             }
         }
 
@@ -146,17 +147,17 @@ namespace GraphicalTestApp
             //Call this Actor's OnUpdate events
             OnUpdate?.Invoke(deltaTime);
 
-            foreach (Actor a in additions)
+            foreach (Actor a in _additions)
             {
                 _children.Add(a);
             }
-            additions.Clear();
+            _additions.Clear();
 
-            foreach (Actor a in removals)
+            foreach (Actor a in _removals)
             {
                 _children.Remove(a);
             }
-            removals.Clear();
+            _removals.Clear();
 
             //Update all of this Actor's children
             foreach (Actor child in _children)

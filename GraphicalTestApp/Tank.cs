@@ -23,13 +23,13 @@ namespace GraphicalTestApp
         }
         public void MoveUp(float deltatime)
         {
-            if (Input.IsKeyPressed(87))
+            if (Input.IsKeyDown(87))
             {
                 hitbox.isPressed = true;
-                Vector3 facing = new Vector3(getm12, getm11, 0) ;
+                Vector3 facing = new Vector3(getm12, getm11, 0) * -100f;
 
-                XAcceleration = facing.x * -.1f;
-                YAcceleration = facing.y * -.1f;
+                XAcceleration = facing.x;
+                YAcceleration = facing.y;
             }
             else if (Input.IsKeyReleased(87))
             {
@@ -47,13 +47,13 @@ namespace GraphicalTestApp
         }
         public void Moveback(float deltatime)
         {
-            if (Input.IsKeyPressed(83))
+            if (Input.IsKeyDown(83))
             {
                 hitbox.isPressed = true;
-                Vector3 facing = new Vector3(getm12, getm11, 0);
+                Vector3 facing = new Vector3(getm12, getm11, 0) * 100f;
                 
-                XAcceleration = facing.x * .1f;
-                YAcceleration = facing.y * .1f;
+                XAcceleration = facing.x;
+                YAcceleration = facing.y;
             }
             else if (Input.IsKeyReleased(83))
             {
