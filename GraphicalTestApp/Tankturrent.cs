@@ -49,7 +49,7 @@ namespace GraphicalTestApp
                     bullet.XVelocity = facing.x * -100;
                     bullet.YVelocity = facing.y * -100;
                     bullet.Rotate(GetRotation());
-                    //_bullets--;
+                    _bullets--;
                 }
             }
         }

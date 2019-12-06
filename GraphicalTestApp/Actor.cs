@@ -55,6 +55,8 @@ namespace GraphicalTestApp
             //## Implement the absolute Y coordinate ##//
             get { return _globalTransform.m23; }
         }
+        
+
 
         public float GetRotation()
         {

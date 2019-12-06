@@ -10,7 +10,7 @@ namespace GraphicalTestApp
     {
         Sprite _texture;
         AABB _hitbox;
-        public Bullet(float x , float y) :base(x ,y)
+        public Bullet(float x, float y) : base(x, y)
         {
             x = X;
             y = Y;
@@ -18,11 +18,28 @@ namespace GraphicalTestApp
             _hitbox = new AABB(_texture.Width, _texture.Height);
             AddChild(_texture);
             AddChild(_hitbox);
+            OnUpdate += Ifbulletsgooffscreen;
         }
 
         ~Bullet()
+        {
+            if(Parent != null)
             {
-
+                Parent.RemoveChild(this);
+            }
+            RemoveChild(_hitbox);
+            RemoveChild(_texture);
+            
         }
+
+        public void Ifbulletsgooffscreen(float deltatime)
+        {
+            if(X < 0 || X > Game.Width || Y < 0 || Y > Game.Height)
+            {
+                Parent.RemoveChild(this);
+            }
+        }
+
+        
     }
 }

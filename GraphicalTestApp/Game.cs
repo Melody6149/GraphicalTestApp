@@ -12,12 +12,16 @@ namespace GraphicalTestApp
         private Actor _next = null;
         //The Timer for the entire Game
         private Timer _gameTimer = new Timer();
+        public static int Width;
+        public static int Height;
 
         //Creates a Game and new Scene instance as its active Scene
         public Game(int width, int height, string title)
         {
             RL.InitWindow(width, height, title);
             RL.SetTargetFPS(0);
+            Width = width;
+            Height = height;
         }
         
         //Run the game loop
