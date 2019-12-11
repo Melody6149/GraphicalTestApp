@@ -19,6 +19,7 @@ namespace GraphicalTestApp
             AddChild(_texture);
             AddChild(_hitbox);
             OnUpdate += Ifbulletsgooffscreen;
+            OnUpdate += Collideswithtank;
         }
 
         ~Bullet()
@@ -39,7 +40,13 @@ namespace GraphicalTestApp
                 Parent.RemoveChild(this);
             }
         }
-
-        
+        public void Collideswithtank(float deltatime)
+        {
+            //_hitbox.DetectCollision(Program.tank.Hitbox);
+            if (_hitbox.DetectCollision(Program.tank.Hitbox))
+            {
+                
+            }
+        }
     }
 }

@@ -9,13 +9,13 @@ namespace GraphicalTestApp
     class Tank : Entity
     {
         Sprite _texture;
-        AABB hitbox;
+        public AABB Hitbox;
         public Tank(float x, float y) : base(x, y)
         {
             Sprite _texture = new Sprite("tankBlue.png");
-           AddChild(_texture);
-            hitbox = new AABB(_texture.Width, _texture.Height);
-            AddChild(hitbox);
+            AddChild(_texture);
+            Hitbox = new AABB(_texture.Width, _texture.Height);
+            AddChild(Hitbox);
             OnUpdate += MoveUp;
             OnUpdate += Moveback;
             OnUpdate += rotateleft;
@@ -25,7 +25,7 @@ namespace GraphicalTestApp
         {
             if (Input.IsKeyDown(87))
             {
-                hitbox.isPressed = true;
+                Hitbox.isPressed = true;
                 Vector3 facing = new Vector3(getm12, getm11, 0) * -100f;
 
                 XAcceleration = facing.x;
@@ -33,7 +33,7 @@ namespace GraphicalTestApp
             }
             else if (Input.IsKeyReleased(87))
             {
-                hitbox.isPressed = false;
+                Hitbox.isPressed = false;
                 XAcceleration = 0;
                 XVelocity = 0;
                 YAcceleration = 0;
@@ -49,15 +49,15 @@ namespace GraphicalTestApp
         {
             if (Input.IsKeyDown(83))
             {
-                hitbox.isPressed = true;
+                Hitbox.isPressed = true;
                 Vector3 facing = new Vector3(getm12, getm11, 0) * 100f;
-                
+
                 XAcceleration = facing.x;
                 YAcceleration = facing.y;
             }
             else if (Input.IsKeyReleased(83))
             {
-                hitbox.isPressed = false;
+                Hitbox.isPressed = false;
                 XAcceleration = 0;
                 XVelocity = 0;
                 YAcceleration = 0;
@@ -83,6 +83,15 @@ namespace GraphicalTestApp
             {
                 Rotate(1f * deltatime);
             }
+        }
+        ~Tank()
+        {
+            if (Parent != null)
+            {
+                Parent.RemoveChild(this);
+            }
+            Parent.RemoveChild(_texture);
+            Parent.RemoveChild(Hitbox);
         }
     }
 }
