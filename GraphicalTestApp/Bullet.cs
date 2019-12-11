@@ -43,9 +43,9 @@ namespace GraphicalTestApp
         public void Collideswithtank(float deltatime)
         {
             //_hitbox.DetectCollision(Program.tank.Hitbox);
-            if (_hitbox.DetectCollision(Program.tank.Hitbox))
+            if (_hitbox.DetectCollision(Program.tank2.Hitbox))
             {
-                
+                Parent.RemoveChild(Program.tank2);
             }
         }
     }

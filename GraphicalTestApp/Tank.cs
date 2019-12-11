@@ -26,10 +26,10 @@ namespace GraphicalTestApp
             if (Input.IsKeyDown(87))
             {
                 Hitbox.isPressed = true;
-                Vector3 facing = new Vector3(getm12, getm11, 0) * -100f;
+                Vector3 facing = new Vector3(getm12, getm11, 0) * -100f; // used to get the direction the tank is facing
 
                 XAcceleration = facing.x;
-                YAcceleration = facing.y;
+                YAcceleration = facing.y; // used to move tank in direction the tank is facing
             }
             else if (Input.IsKeyReleased(87))
             {
@@ -47,15 +47,15 @@ namespace GraphicalTestApp
         }
         public void Moveback(float deltatime)
         {
-            if (Input.IsKeyDown(83))
+            if (Input.IsKeyDown(83)) // checks if the s key is down
             {
                 Hitbox.isPressed = true;
-                Vector3 facing = new Vector3(getm12, getm11, 0) * 100f;
+                Vector3 facing = new Vector3(getm12, getm11, 0) * 100f; //used to get the direction the tank is facing
 
-                XAcceleration = facing.x;
-                YAcceleration = facing.y;
+                XAcceleration = facing.x; 
+                YAcceleration = facing.y; // used to make tank move in direction the tank is facing
             }
-            else if (Input.IsKeyReleased(83))
+            else if (Input.IsKeyReleased(83)) // runs if s key is realesed
             {
                 Hitbox.isPressed = false;
                 XAcceleration = 0;
@@ -64,10 +64,7 @@ namespace GraphicalTestApp
                 YVelocity = 0;
 
             }
-            //if (YVelocity > .01f)
-            //{
-            //    YVelocity = .01f;
-            //}
+           
         }
         public void rotateleft(float deltatime)
         {
@@ -90,8 +87,8 @@ namespace GraphicalTestApp
             {
                 Parent.RemoveChild(this);
             }
-            Parent.RemoveChild(_texture);
-            Parent.RemoveChild(Hitbox);
+            RemoveChild(_texture);
+            RemoveChild(Hitbox);
         }
     }
 }

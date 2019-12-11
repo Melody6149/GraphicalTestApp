@@ -41,7 +41,7 @@ namespace GraphicalTestApp
         {
             if (_bullets > 0)
             {
-                if (Input.IsKeyDown(32))
+                if (Input.IsKeyPressed(32))
                 {
                     Bullet bullet = new Bullet(XAbsolute, YAbsolute);
                     Parent.Parent.AddChild(bullet);
