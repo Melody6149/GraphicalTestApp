@@ -26,7 +26,7 @@ namespace GraphicalTestApp
             if (Input.IsKeyDown(87))
             {
                 Hitbox.isPressed = true;
-                Vector3 facing = new Vector3(getm12, getm11, 0) * -100f; // used to get the direction the tank is facing
+                Vector3 facing = new Vector3(Getm12, Getm11, 0) * -100f; // used to get the direction the tank is facing
 
                 XAcceleration = facing.x;
                 YAcceleration = facing.y; // used to move tank in direction the tank is facing
@@ -50,7 +50,7 @@ namespace GraphicalTestApp
             if (Input.IsKeyDown(83)) // checks if the s key is down
             {
                 Hitbox.isPressed = true;
-                Vector3 facing = new Vector3(getm12, getm11, 0) * 100f; //used to get the direction the tank is facing
+                Vector3 facing = new Vector3(Getm12, Getm11, 0) * 100f; //used to get the direction the tank is facing
 
                 XAcceleration = facing.x; 
                 YAcceleration = facing.y; // used to make tank move in direction the tank is facing

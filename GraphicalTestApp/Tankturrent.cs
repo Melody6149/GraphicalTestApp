@@ -45,7 +45,7 @@ namespace GraphicalTestApp
                 {
                     Bullet bullet = new Bullet(XAbsolute, YAbsolute);
                     Parent.Parent.AddChild(bullet);
-                    Vector3 facing = new Vector3(getm12, getm11, 0);
+                    Vector3 facing = new Vector3(Getm12, Getm11, 0);
                     bullet.XVelocity = facing.x * -100;
                     bullet.YVelocity = facing.y * -100;
                     bullet.Rotate(GetRotation());

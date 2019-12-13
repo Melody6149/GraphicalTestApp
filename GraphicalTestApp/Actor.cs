@@ -181,14 +181,14 @@ namespace GraphicalTestApp
             }
         }
 
-        public float getm11
+        public float Getm11
         {
             get
             {
                 return _globalTransform.m11;
             }
         }
-        public float getm12
+        public float Getm12
         {
             get
             {
