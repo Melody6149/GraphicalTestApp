@@ -27,9 +27,9 @@ namespace GraphicalTestApp
             {
                 Hitbox.isPressed = true;
                 Vector3 facing = new Vector3(Getm12, Getm11, 0) * -100f; // used to get the direction the tank is facing
+                XVelocity = facing.x;
+                YVelocity = facing.y; // used to move tank in direction the tank is facing
 
-                XAcceleration = facing.x;
-                YAcceleration = facing.y; // used to move tank in direction the tank is facing
             }
             else if (Input.IsKeyReleased(87))
             {
